@@ -1,0 +1,46 @@
+
+syntax ="proto3";
+option java_multiple_files=true;
+option java_package="com.java.GeneratedClasses";
+option java_outer_classname = "EmployeeProto";
+
+///import  "google/protobuf/timestamp.proto";
+package com.java;
+
+message Employee{
+  int32 id=1;
+  string name=2;
+  double salary=3;
+  repeated Department department=4;
+  map<string,string> addressmap=5;
+  bool inactive=6;
+  //bytes profilePicture=7;
+  //google.protobuf.Timestamp joindate=8;
+
+}
+message Department{
+  int32 id=1;
+  string name=2;
+}
+
+message EmployeeList{
+  repeated Employee employees=1;
+}
+message Empty{
+
+}
+
+service EmployeeService{
+
+  //get Employee by Id
+  rpc getEmployee(Employee) returns (Employee);
+
+  //add and Employee
+   rpc addEmployee(Employee) returns (Employee);
+
+   //get All Employees
+  rpc getAllEmployee(Empty) returns (EmployeeList);
+
+
+
+}
